@@ -1,0 +1,74 @@
+body{
+    background-color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+h1{
+    text-align: center;
+}
+table{
+    border-collapse: collapse;
+    border: 1px solid black;
+    padding: 10px;
+}
+
+th, td{
+    border: thin solid black;
+    /*border-collapse: collapse;*/
+    padding: 6px;
+}
+
+td:hover{
+    scale: 1.05;
+}
+
+.me-boxshadow{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.me-margin{
+    margin: 3em;
+    padding: 0.5em;
+}
+
+.page{
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: 50% 50%;
+}
+
+.fahrtenbuch-all{
+    background-color: whitesmoke;
+    grid-column: 1;
+    grid-row: 1;
+    row-span: 2;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.new-add{
+    background-color: whitesmoke;
+    grid-column: 2;
+    grid-row: 1;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.letz-bearb{
+    background-color: whitesmoke;
+    grid-column: 2;
+    grid-row: 2;
+
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.fahrtenbuch-all:hover{
+    cursor: pointer;
+}

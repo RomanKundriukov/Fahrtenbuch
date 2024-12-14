@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Fahrtenbuch>
+
+<Fahrt><Datum>1212-12-12</Datum><Datum>1212-12-12</Datum><UhrzeitVon>12:12</UhrzeitVon><UhrzeitBis/><KmStart>12</KmStart><KmEnd/><KmDiff/><Zweck>12</Zweck><Name>12</Name></Fahrt></Fahrtenbuch>
