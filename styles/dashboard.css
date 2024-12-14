@@ -61,7 +61,7 @@ td:hover{
 
 .letz-bearb{
     background-color: whitesmoke;
-    grid-column: 2;
+    grid-column: 1;
     grid-row: 2;
 
     display: flex;

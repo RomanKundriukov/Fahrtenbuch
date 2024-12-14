@@ -6,43 +6,48 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $uhrzeitBis = $_POST['UhrzeitBis'];
     $kmStart = $_POST['KmStart'];
     $kmEnd = $_POST['KmEnd'];
-    $kmDiff = $_POST['KmDiff'];
     $zweck = $_POST['Zweck'];
     $name = $_POST['Name'];
 
-    // XML-Datei laden
-    $xmlFile = '../Daten/Fahrtenbuch.xml'; // Pfad zur XML-Datei
-    $xml = simplexml_load_file($xmlFile);
+    $kmDiff = $kmEnd - $kmStart;
 
+    // Wenn alles gültig ist, weiter mit Speichern
+    $xmlFile = '../Daten/Fahrtenbuch.xml';
+    $dom = new DOMDocument('1.0', 'UTF-8');
+    $dom->preserveWhiteSpace = false;
+    $dom->formatOutput = true;
 
-
-    if ($xml === false) {
-        http_response_code(500);
-        echo 'Fehler beim Laden der XML-Datei.';
-        exit();
+    if (file_exists($xmlFile)) {
+        $dom->load($xmlFile);
+    } else {
+        $root = $dom->createElement('Fahrtenbuch');
+        $dom->appendChild($root);
     }
 
-    // Neue Fahrt hinzufügen
-    $neueFahrt = $xml->addChild('Fahrt');
-    $neueFahrt->addChild('Datum', htmlspecialchars($startDatum, ENT_XML1, 'UTF-8'));
-    $neueFahrt->addChild('Datum', htmlspecialchars($endDatum, ENT_XML1, 'UTF-8'));
-    $neueFahrt->addChild('UhrzeitVon', htmlspecialchars($uhrzeitVon, ENT_XML1, 'UTF-8'));
-    $neueFahrt->addChild('UhrzeitBis', htmlspecialchars($uhrzeitBis, ENT_XML1, 'UTF-8'));
-    $neueFahrt->addChild('KmStart', htmlspecialchars($kmStart, ENT_XML1, 'UTF-8'));
-    $neueFahrt->addChild('KmEnd', htmlspecialchars($kmEnd, ENT_XML1, 'UTF-8'));
-    $neueFahrt->addChild('KmDiff', htmlspecialchars($kmDiff, ENT_XML1, 'UTF-8'));
-    $neueFahrt->addChild('Zweck', htmlspecialchars($zweck, ENT_XML1, 'UTF-8'));
-    $neueFahrt->addChild('Name', htmlspecialchars($name, ENT_XML1, 'UTF-8'));
+    $root = $dom->documentElement;
+    $fahrt = $dom->createElement('Fahrt');
 
-    // XML-Datei speichern
-    if ($xml->asXML($xmlFile)) {
-        echo 'Daten erfolgreich hinzugefügt.';
+    $fahrt->appendChild($dom->createElement('StartDatum', htmlspecialchars($startDatum, ENT_XML1, 'UTF-8')));
+    $fahrt->appendChild($dom->createElement('EndDatum', htmlspecialchars($endDatum, ENT_XML1, 'UTF-8')));
+    $fahrt->appendChild($dom->createElement('UhrzeitVon', htmlspecialchars($uhrzeitVon, ENT_XML1, 'UTF-8')));
+    $fahrt->appendChild($dom->createElement('UhrzeitBis', htmlspecialchars($uhrzeitBis, ENT_XML1, 'UTF-8')));
+    $fahrt->appendChild($dom->createElement('KmStart', htmlspecialchars($kmStart, ENT_XML1, 'UTF-8')));
+    $fahrt->appendChild($dom->createElement('KmEnd', htmlspecialchars($kmEnd, ENT_XML1, 'UTF-8')));
+    $fahrt->appendChild($dom->createElement('KmDiff', htmlspecialchars($kmDiff, ENT_XML1, 'UTF-8')));
+    $fahrt->appendChild($dom->createElement('Zweck', htmlspecialchars($zweck, ENT_XML1, 'UTF-8')));
+    $fahrt->appendChild($dom->createElement('Name', htmlspecialchars($name, ENT_XML1, 'UTF-8')));
+
+    $root->appendChild($fahrt);
+
+    if ($dom->save($xmlFile)) {
+        http_response_code(200);
+        //echo "Daten erfolgreich hinzugefügt.";
     } else {
         http_response_code(500);
-        echo 'Fehler beim Speichern der XML-Datei.';
+        echo "Fehler beim Speichern der XML-Datei.";
     }
 } else {
     http_response_code(405);
-    echo 'Ungültige Anfrage.';
+    echo "Ungültige Anfrage.";
 }
 ?>
