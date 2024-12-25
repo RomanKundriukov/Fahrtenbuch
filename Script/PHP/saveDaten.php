@@ -8,6 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $kmEnd = $_POST['KmEnd'];
     $zweck = $_POST['Zweck'];
     $name = $_POST['Name'];
+    $auto = $_POST['Auto'];
+    $status = $_POST['Status'];
 
     $kmDiff = $kmEnd - $kmStart;
 
@@ -36,6 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $fahrt->appendChild($dom->createElement('KmDiff', htmlspecialchars($kmDiff, ENT_XML1, 'UTF-8')));
     $fahrt->appendChild($dom->createElement('Zweck', htmlspecialchars($zweck, ENT_XML1, 'UTF-8')));
     $fahrt->appendChild($dom->createElement('Name', htmlspecialchars($name, ENT_XML1, 'UTF-8')));
+    $fahrt->appendChild($dom->createElement('Auto', htmlspecialchars($auto, ENT_XML1, 'UTF-8')));
+    $fahrt->appendChild($dom->createElement('Status', htmlspecialchars($status, ENT_XML1, 'UTF-8')));
 
     $root->appendChild($fahrt);
 
