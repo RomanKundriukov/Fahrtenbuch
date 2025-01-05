@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Fahrtenbuch>
+  <Fahrt>
+    <StartDatum>2024-12-01</StartDatum>
+    <EndDatum>2024-12-02</EndDatum>
+    <UhrzeitVon>08:00</UhrzeitVon>
+    <UhrzeitBis>17:00</UhrzeitBis>
+    <KmStart>100</KmStart>
+    <KmEnd>200</KmEnd>
+    <KmDiff>100</KmDiff>
+    <Zweck>Geschäft</Zweck>
+    <Name>Max Mustermann</Name>
+  </Fahrt>
+  <Fahrt>
+    <StartDatum>2024-12-03</StartDatum>
+    <EndDatum>2024-12-04</EndDatum>
+    <UhrzeitVon>09:00</UhrzeitVon>
+    <UhrzeitBis>18:00</UhrzeitBis>
+    <KmStart>200</KmStart>
+    <KmEnd>350</KmEnd>
+    <KmDiff>150</KmDiff>
+    <Zweck>Privat</Zweck>
+    <Name>Erika Musterfrau</Name>
+  </Fahrt>
+  <Fahrt>
+    <StartDatum>2024-12-14</StartDatum>
+    <EndDatum>2024-12-14</EndDatum>
+    <UhrzeitVon>20:00</UhrzeitVon>
+    <UhrzeitBis>21:00</UhrzeitBis>
+    <KmStart>100</KmStart>
+    <KmEnd>110</KmEnd>
+    <KmDiff>-10</KmDiff>
+    <Zweck>Privat</Zweck>
+    <Name>Roman</Name>
+  </Fahrt>
+  <Fahrt>
+    <StartDatum>2024-12-14</StartDatum>
+    <EndDatum>2024-12-14</EndDatum>
+    <UhrzeitVon>12:00</UhrzeitVon>
+    <UhrzeitBis>13:00</UhrzeitBis>
+    <KmStart>100</KmStart>
+    <KmEnd>110</KmEnd>
+    <KmDiff>10</KmDiff>
+    <Zweck>hui</Zweck>
+    <Name>Roman</Name>
+  </Fahrt>
+</Fahrtenbuch>
