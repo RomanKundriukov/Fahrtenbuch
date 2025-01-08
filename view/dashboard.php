@@ -57,6 +57,9 @@ if (!is_file($filePfad)) {
                         $fahrtenbuch = simplexml_load_file($pfad);
 
                         if(!empty($fahrtenbuch->Fahrt) && count($fahrtenbuch->Fahrt) > 0) {
+
+                            $anzahlFahrten = count($fahrtenbuch->Fahrt);
+
                             foreach($fahrtenbuch->Fahrt as $fahrt) {
                                 echo "<tr>";
                                 echo "<td>" . htmlspecialchars($fahrt->StartDatum) . "</td>";
